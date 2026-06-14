@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';"
+    />
+    <title>Infra Dock</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="titlebar"></div>
+
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">⚓</div>
+          <div class="brand-text">
+            <div class="brand-name">Infra Dock</div>
+            <div class="brand-sub">Local server control</div>
+          </div>
+        </div>
+
+        <nav class="filters" id="filters"></nav>
+
+        <div class="sidebar-footer">
+          <button class="ghost-btn" id="refreshBtn" title="Refresh (⌘R)">
+            <span class="spin-host"></span> Refresh
+          </button>
+          <div class="sysinfo" id="sysinfo"></div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="content-header">
+          <div>
+            <h1>Servers</h1>
+            <p class="muted" id="summary">Loading…</p>
+          </div>
+          <div class="search">
+            <input id="search" type="search" placeholder="Search servers…" />
+          </div>
+        </header>
+
+        <div id="banner" class="banner hidden"></div>
+
+        <section class="grid" id="grid"></section>
+
+        <div id="empty" class="empty hidden">
+          <div class="empty-icon">🗂️</div>
+          <p>No servers match your filter.</p>
+        </div>
+      </main>
+    </div>
+
+    <!-- Config / Logs modal -->
+    <div class="modal-backdrop hidden" id="modalBackdrop">
+      <div class="modal">
+        <header class="modal-header">
+          <div>
+            <h2 id="modalTitle">Title</h2>
+            <p class="muted mono" id="modalPath"></p>
+          </div>
+          <button class="icon-btn" id="modalClose" title="Close">✕</button>
+        </header>
+        <div class="modal-body">
+          <textarea id="editor" spellcheck="false"></textarea>
+        </div>
+        <footer class="modal-footer">
+          <div class="modal-actions-left">
+            <button class="ghost-btn" id="revealBtn">Reveal in Finder</button>
+            <button class="ghost-btn" id="openExternalBtn">Open externally</button>
+          </div>
+          <div class="modal-actions-right">
+            <span class="modal-status" id="modalStatus"></span>
+            <button class="ghost-btn" id="cancelBtn">Close</button>
+            <button class="primary-btn" id="saveBtn">Save changes</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toasts" id="toasts"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
